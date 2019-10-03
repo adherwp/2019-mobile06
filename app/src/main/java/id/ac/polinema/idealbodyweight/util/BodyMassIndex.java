@@ -3,10 +3,10 @@ package id.ac.polinema.idealbodyweight.util;
 public class BodyMassIndex {
 
     private int mass;
-    private int height;
+    private float height;
     private float index;
 
-    public BodyMassIndex(int mass, int height) {
+    public BodyMassIndex(int mass, float height) {
         this.mass = mass;
         this.height = height;
         this.index = calculate();

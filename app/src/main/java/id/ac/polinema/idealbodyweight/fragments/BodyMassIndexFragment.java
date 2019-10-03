@@ -47,7 +47,7 @@ public class BodyMassIndexFragment extends Fragment {
                     String heightString = heightText.getText().toString();
                     String weightString = weightText.getText().toString();
                     if (!heightString.isEmpty() && !weightString.isEmpty()) {
-                        int height = Integer.parseInt(heightString);
+                        float height = Float.parseFloat(heightString);
                         int weight = Integer.parseInt(weightString);
                         BodyMassIndex bodyMassIndex = new BodyMassIndex(weight, height);
                         mListener.onCalculateBodyMassIndexClicked(bodyMassIndex.getIndex());
