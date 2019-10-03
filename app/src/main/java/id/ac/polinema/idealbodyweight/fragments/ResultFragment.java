@@ -42,10 +42,8 @@ public class ResultFragment extends Fragment {
         tryAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mListener != null && status.equals("BrocaIndex")) {
-                    mListener.onTryAgainButtonClicked("BrocaIndex");
-                }else{
-                    mListener.onTryAgainButtonClicked("BodyMassIndex");
+                if (mListener != null) {
+                    mListener.onTryAgainButtonClicked(status);
                 }
             }
         });
