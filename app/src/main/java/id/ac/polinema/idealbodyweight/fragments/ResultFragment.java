@@ -24,7 +24,6 @@ public class ResultFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     String information;
-    String status;
 
     public ResultFragment() {
         // Required empty public constructor
@@ -43,7 +42,7 @@ public class ResultFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mListener != null) {
-                    mListener.onTryAgainButtonClicked(status);
+                    mListener.onTryAgainButtonClicked("terisi");
                 }
             }
         });
@@ -53,9 +52,6 @@ public class ResultFragment extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void setInformation(String information) {
         this.information = information;
-    }
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     @Override

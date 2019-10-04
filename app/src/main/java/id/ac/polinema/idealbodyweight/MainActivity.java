@@ -2,6 +2,7 @@ package id.ac.polinema.idealbodyweight;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -74,31 +75,29 @@ public class MainActivity extends AppCompatActivity implements
 	@Override
 	public void onCalculateBrocaIndexClicked(float index) {
 		resultFragment.setInformation(String.format("Your ideal weight is %.2f kg", index));
-		resultFragment.setStatus("BrocaIndex");
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.fragment_container, resultFragment)
+				.replace(R.id.fragment_container, resultFragment,"BrocaIndexFragment")
 				.commit();
 	}
 
 	@Override
 	public void onTryAgainButtonClicked(String tag) {
-		if(tag.equals("BrocaIndex")){
-			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.fragment_container, brocaIndexFragment)
-					.commit();
-		}else{
-			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.fragment_container, bodyMassIndexFragment)
-					.commit();
+		ResultFragment checkBroca=(ResultFragment) getSupportFragmentManager().findFragmentByTag("BrocaIndexFragment");
+
+		if(tag != null){
+			if(checkBroca != null){
+				getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, brocaIndexFragment).commit();
+			}else{
+				getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, bodyMassIndexFragment).commit();
+			}
 		}
 	}
 
 	@Override
 	public void onCalculateBodyMassIndexClicked(float index) {
 		resultFragment.setInformation(String.format("Your body mass is %.2f kg", index));
-		resultFragment.setStatus("BodyMassIndex");
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.fragment_container, resultFragment)
+				.replace(R.id.fragment_container, resultFragment,"BodyMassIndexFragment")
 				.commit();
 	}
 }
